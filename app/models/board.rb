@@ -67,7 +67,7 @@ class Board
         next if index == 0
 #return if empty slot
         if sequence[index] == "clear"
-          current_piece = :empty
+          current_piece = "empty"
           count = 0
         end
 # check for sequence of four

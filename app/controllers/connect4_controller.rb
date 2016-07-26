@@ -12,12 +12,15 @@ class Connect4Controller < ApplicationController
   def update
     column_number = params[:column_number].to_i
     @connect4 = Connect4.new(session[:board])
-    @connect4.game_board.add_piece(column_number,:o)
-    @connect4.game_board.add_piece(rand(7)+1,:x)
+    @connect4.game_board.add_piece(column_number,"o")
     session[:board] = @connect4.game_board.game_board
+    puts @connect4.game_board.game_board
+    puts @connect4.game_over?
     if @connect4.game_over?
       redirect_to connect4_path
     else
+      @connect4.game_board.add_piece(rand(7)+1,"x")
+      session[:board] = @connect4.game_board.game_board
       redirect_to edit_connect4_path
     end
   end
