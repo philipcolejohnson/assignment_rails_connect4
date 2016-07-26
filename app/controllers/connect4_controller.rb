@@ -14,8 +14,7 @@ class Connect4Controller < ApplicationController
     @connect4 = Connect4.new(session[:board])
     @connect4.game_board.add_piece(column_number,"o")
     session[:board] = @connect4.game_board.game_board
-    puts @connect4.game_board.game_board
-    puts @connect4.game_over?
+
     if @connect4.game_over?
       redirect_to connect4_path
     else
